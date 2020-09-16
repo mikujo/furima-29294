@@ -9,10 +9,26 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :shipping_day
 
-  validates :name, :detail, :category, :status, :postage, :prefecture, :shipping_day, :price, presence: true
-  validates :category_id, :status_id, :postage_id, :prefecture_id, :shipping_day_id, numericality: { other_than: 1 }
+  with_options presence: true do
+    validates :image
+    validates :name
+    validates :detail
+    validates :category
+    validates :status
+    validates :postage
+    validates :prefecture
+    validates :shipping_day
+  end
 
-  # 画像必須(ActiveStorage)
-  # price 範囲設定 ¥300~¥9,999,999
-  # price 半角数字のみ
+  with_options numericality: { other_than: 1 } do
+    validates :category_id
+    validates :status_id
+    validates :postage_id
+    validates :prefecture_id
+    validates :shipping_day_id
+  end
+
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/}
+
+
 end
