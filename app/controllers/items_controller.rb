@@ -8,9 +8,9 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
     if @item.save
-      redirect_to action: :index
+      redirect_to root_path
     else
       render :new
     end
@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
 
   def move_to_index
     unless user_signed_in?
-      redirect_to action: :index
+      redirect_to root_path
     end
   end
 

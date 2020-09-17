@@ -13,11 +13,11 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :detail
-    validates :category
-    validates :status
-    validates :postage
-    validates :prefecture
-    validates :shipping_day
+    # validates :category
+    # validates :status
+    # validates :postage
+    # validates :prefecture
+    # validates :shipping_day
   end
 
   with_options numericality: { other_than: 1 } do
@@ -28,7 +28,7 @@ class Item < ApplicationRecord
     validates :shipping_day_id
   end
 
-  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A[0-9]+\z/}
+  validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, with: /\A[0-9]+\z/}
 
 
 end
