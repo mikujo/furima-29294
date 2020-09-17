@@ -10,8 +10,10 @@ function price() {
       let tax = priceContent * 0.1
       let taxContent = Math.round(tax);
       let profitContent = priceContent - taxContent
-      addTax.textContent = taxContent;
-      profit.textContent = profitContent;
+      let afterTaxContent = taxContent.toLocaleString();
+      let afterProfitContent = profitContent.toLocaleString();
+      addTax.textContent = afterTaxContent;
+      profit.textContent = afterProfitContent;
   
     } else {
       let taxContent = '0';
@@ -23,10 +25,3 @@ function price() {
   itemPrice.addEventListener("input", inputPrice);
 }
 window.addEventListener("load", price);
-
-
-
-
-
-
-
