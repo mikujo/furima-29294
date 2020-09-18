@@ -16,4 +16,6 @@ class User < ApplicationRecord
     validates :last_name_leading, format: { with: zenkaku_katakana}
     validates :birthday
   end
+
+  has_many :items
 end
