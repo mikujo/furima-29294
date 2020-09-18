@@ -13,11 +13,6 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :detail
-    # validates :category
-    # validates :status
-    # validates :postage
-    # validates :prefecture
-    # validates :shipping_day
   end
 
   with_options numericality: { other_than: 1 } do
