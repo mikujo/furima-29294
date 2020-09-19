@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, only: :new
   def index
-    @item = Item.all
+    @items = Item.all.order("DESC")
   end
 
   def new
