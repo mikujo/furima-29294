@@ -10,6 +10,10 @@ RSpec.describe UserOrder, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@user_order).to be_valid
       end
+      it 'building_nameがなくても保存できること' do
+        @user_order.building_name = nil
+        expect(@user_order).to be_valid
+      end
     end
 
     context '商品購入がうまくいかない時' do
